@@ -1,0 +1,30 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: his-gateway
+#指定注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+    registry-fetch-interval-seconds: 5 #每间隔5秒，从注册中心拉取一次最新的服务列表
+  instance:
+    lease-renewal-interval-in-seconds: 10 #每10秒钟，向注册中心发送一次心跳
+    lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务
+zuul:
+  prefix: /api
+  routes:
+    item-service: /item/**  #发出item开头的请求，就去访问：item-service 商品微服务
+    upload-service: /upload/**  #上传服务的路由
+    search-service: /search/**  #搜索服务的路由
+    user-service: /user/**      #用户服务的路由
+    auth-service: /auth/**      #所有以auth开头的请求，路由到auth-service上
+  add-host-header: true  #允许携带请求头
+  sensitive-headers: #不指定内容，即表示，没有要忽略的敏感关键字
+
+#配置JWT需要的参数信息，不用硬编码在代码中
+shopping:
+  jwt:
+    pubKeyPath: D:\IEDA\shopping\tmp\rsa\rsa.pub # 公钥地址
+    cookieName: shopping-token #cookie的名称
