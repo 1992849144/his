@@ -1,9 +1,8 @@
 package org.java.shopping.handler;
 
-import org.java.shopping.enums.ShoppingEnums;
-import org.java.shopping.exception.ShoppingException;
+import org.java.shopping.enums.HisEnums;
+import org.java.shopping.exception.HisException;
 import org.java.shopping.vo.ExceptionResult;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,11 +18,11 @@ public class CommonExceptionHandler {
      * @param ex
      * @return
      */
-    @ExceptionHandler(ShoppingException.class)
-    public ResponseEntity<ExceptionResult> handleException(ShoppingException ex){
+    @ExceptionHandler(HisException.class)
+    public ResponseEntity<ExceptionResult> handleException(HisException ex){
 
         //获得自定义异常的中枚举ShoppingEnums,枚举中，包含两个值: 状态码与错误消息
-        ShoppingEnums en = ex.getShoppingEnums();
+        HisEnums en = ex.getHisEnums();
 
 
         //创建对象，封装返回结果

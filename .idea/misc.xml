@@ -13,6 +13,11 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/his-drugwarehouse/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectResources">
     <resource url="http://www.springframework.org/schema/aop" location="$PROJECT_DIR$/../../spring/spring-aop-4.2.xsd" />

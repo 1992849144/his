@@ -1,0 +1,30 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: drugwarehouse-service
+  datasource:
+    url: jdbc:mysql:///hisproject
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123
+    type: com.alibaba.druid.pool.DruidDataSource
+#注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+    registry-fetch-interval-seconds: 5 #每间隔5秒，从注册中心拉取一次最新的服务列表
+  instance:
+    lease-renewal-interval-in-seconds: 10 #每10秒钟，向注册中心发送一次心跳
+    lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务
+
+##以debug方式，显示org.java.dao包所有的底层sql语句
+#logging:
+#  level:
+#    org:
+#      java:
+#        his:
+#          drugwarehouse:
+#            mapper: debug
+

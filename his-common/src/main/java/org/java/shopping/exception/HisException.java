@@ -3,7 +3,7 @@ package org.java.shopping.exception;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.java.shopping.enums.ShoppingEnums;
+import org.java.shopping.enums.HisEnums;
 
 /**
  * 自定义异常类
@@ -11,8 +11,8 @@ import org.java.shopping.enums.ShoppingEnums;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShoppingException  extends RuntimeException{
+public class HisException extends RuntimeException{
 
-    private ShoppingEnums shoppingEnums;
+    private HisEnums hisEnums;
 
 }

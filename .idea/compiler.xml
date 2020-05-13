@@ -7,11 +7,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="his-common" />
+        <module name="his-drugwarehouse-interface" />
+        <module name="his-drugwarehouse-service" />
         <module name="his-eureka" />
         <module name="his-gateway" />
+        <module name="his-user-interface" />
+        <module name="his-user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="his-drug" target="1.8" />
+      <module name="his-drug-interface" target="1.8" />
+      <module name="his-drug-service" target="1.8" />
+      <module name="his-drugwarehouse" target="1.8" />
       <module name="hiseureka" target="1.8" />
       <module name="shopping-eureka" target="1.8" />
     </bytecodeTargetLevel>
