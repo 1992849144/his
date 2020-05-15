@@ -8,6 +8,11 @@
     <file url="file://$PROJECT_DIR$/his-drugwarehouse/his-drugwarehouse-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-manage-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-manage-user/hi-manages-user-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-manage-user/his-manages-user-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-manage-user/his-manages-user-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-manage-user/his-manages-user-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-user" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-user/his-user-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-user/his-user-service" charset="UTF-8" />

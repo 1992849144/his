@@ -2,7 +2,7 @@ server:
   port: 9000
 spring:
   application:
-    name: his-gateway
+    name: his-gateway  #网关zuul
 #指定注册中心
 eureka:
   client:

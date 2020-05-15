@@ -1,8 +1,8 @@
 server:
-  port: 10000
+  port: 12000
 spring:
   application:
-    name: drugwarehouse-service  #药库微服务
+    name: manages-user-service  #前台微服务
   datasource:
     url: jdbc:mysql:///hisproject
     driver-class-name: com.mysql.jdbc.Driver
@@ -19,12 +19,5 @@ eureka:
     lease-renewal-interval-in-seconds: 10 #每10秒钟，向注册中心发送一次心跳
     lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务
 
-##以debug方式，显示org.java.dao包所有的底层sql语句
-#logging:
-#  level:
-#    org:
-#      java:
-#        his:
-#          drugwarehouse:
-#            mapper: debug
-
+mybatis:
+  type-aliases-package: org.java.user.pojo

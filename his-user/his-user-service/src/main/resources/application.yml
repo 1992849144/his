@@ -1,8 +1,8 @@
 server:
-  port: 15000
+  port: 11000
 spring:
   application:
-    name: user-service
+    name: user-service  #前台微服务
   datasource:
     url: jdbc:mysql:///hisproject
     driver-class-name: com.mysql.jdbc.Driver

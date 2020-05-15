@@ -11,11 +11,15 @@
         <module name="his-drugwarehouse-service" />
         <module name="his-eureka" />
         <module name="his-gateway" />
+        <module name="his-manages-user-interface" />
+        <module name="his-manages-user-service" />
         <module name="his-user-interface" />
         <module name="his-user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="hi-manages-user-interface" target="1.8" />
+      <module name="hi-manages-user-service" target="1.8" />
       <module name="his-drug" target="1.8" />
       <module name="his-drug-interface" target="1.8" />
       <module name="his-drug-service" target="1.8" />

@@ -1,14 +1,13 @@
 package org.java.his.drugwarehouse.web;
 
-import org.apache.ibatis.annotations.Delete;
 import org.java.his.drugwarehouse.pojo.Drugwarehouse;
 import org.java.his.drugwarehouse.service.DrugwarehouseService;
-import org.java.shopping.vo.PageResult;
+import org.java.his.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/drugwarehouse")
@@ -32,13 +31,17 @@ public class DrugwarehouseController {
 
     /**
      * 加载所有药品存储在药品库
-     * 直接访问地址: http://localhost:10000/drugwarehouse/list
-     * 网关访问地址:http://api.his.com/api/drugwarehouse/list
+     * 直接访问地址: http://localhost:10000/drugwarehouse/list?page=1&limit=20
+     * 网关访问地址:http://api.his.com/api/drugwarehouse/list?page=1&limit=20
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity<PageResult<Drugwarehouse>> loadDrugwarehouse(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit){
-        PageResult<Drugwarehouse> pageResult = drugwarehouseService.loadSku(page, limit);
+    public ResponseEntity<PageResult<Drugwarehouse>> loadDrugwarehouse(
+            @RequestParam("page") Integer page,
+            @RequestParam("limit") Integer limit,
+            String drugname,
+            String supplier){
+        PageResult<Drugwarehouse> pageResult = drugwarehouseService.loadSku(page, limit,drugname,supplier);
         return ResponseEntity.ok(pageResult);
     }
 
@@ -79,5 +82,44 @@ public class DrugwarehouseController {
     public ResponseEntity<Void> updateDrugwarehouse(Drugwarehouse drugwarehouse){
         drugwarehouseService.updateDrugwarehouse(drugwarehouse);
         return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 修改入库数量
+     * 直接访问地址: http://localhost:10000/drugwarehouse/putReceipt
+     * 网关访问地址:http://api.his.com/api/drugwarehouse/putReceipt
+     * @param drugwarehouse
+     * @return
+     */
+    @PutMapping("/putReceipt")
+    public ResponseEntity<Void> putReceipt(Drugwarehouse drugwarehouse){
+        drugwarehouseService.putReceipt(drugwarehouse);
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 药品调价
+     * 直接访问地址: http://localhost:10000/drugwarehouse/putPriceadjustment
+     * 网关访问地址:http://api.his.com/api/drugwarehouse/putPriceadjustment
+     * @param map
+     * @return
+     */
+    @PutMapping("putPriceadjustment")
+    public ResponseEntity<Void> putPriceadjustment(@RequestParam Map map){
+        drugwarehouseService.putPriceadjustment(map);
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 根据药品名称，获得药品详情
+     * 直接访问地址: http://localhost:10000/drugwarehouse/putPriceadjustment
+     * 网关访问地址:http://api.his.com/api/drugwarehouse/query
+     * @param drugname
+     * @return
+     */
+    @GetMapping("/query")
+    public ResponseEntity<Drugwarehouse> queryDrugName(@RequestParam("drugname") String drugname){
+        Drugwarehouse drugwarehouse = drugwarehouseService.queryDrugName(drugname);
+        return ResponseEntity.ok(drugwarehouse);
     }
  }
