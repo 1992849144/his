@@ -19,6 +19,16 @@ eureka:
     lease-renewal-interval-in-seconds: 10 #每10秒钟，向注册中心发送一次心跳
     lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务
 
+#配置JWT需要的参数信息，不用硬编码在代码中
+his:
+  jwt:
+    pubKeyPath: D:\project\his\tmp\rsa\rsa.pub # 公钥地址
+    cookieName: his-token #cookie的名称
+
+mybatis:
+  type-aliases-package: org.java.his.drugwarehouse.pojo
+  mapper-locations: classpath:mapper/*Mapper.xml
+
 ##以debug方式，显示org.java.dao包所有的底层sql语句
 #logging:
 #  level:

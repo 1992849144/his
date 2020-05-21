@@ -1,0 +1,24 @@
+server:
+  port: 14000
+spring:
+  application:
+    name: upload-service
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 10MB
+
+#定义变量，用于保存文件上传的目录
+file:
+  up:
+    path: D:\\project\\his\\upload
+
+#注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+    registry-fetch-interval-seconds: 5 #每间隔5秒，从注册中心拉取一次最新的服务列表
+  instance:
+    lease-renewal-interval-in-seconds: 10 #每10秒钟，向注册中心发送一次心跳
+    lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务

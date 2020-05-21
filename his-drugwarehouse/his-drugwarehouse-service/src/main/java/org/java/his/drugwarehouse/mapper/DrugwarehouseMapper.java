@@ -6,6 +6,9 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.util.Map;
 
+/**
+ * 药品入库
+ */
 public interface DrugwarehouseMapper extends Mapper<Drugwarehouse> {
 
     /**
@@ -19,7 +22,7 @@ public interface DrugwarehouseMapper extends Mapper<Drugwarehouse> {
      * 药品调价
      * @return
      */
-    @Update("update sys_drugwarehouse set retailprice=#{protretailprice},wholesaleprice=#{nowretailprice} where id=#{id}")
+    @Update("update sys_drugwarehouse set retailprice=#{retailprice},wholesaleprice=#{wholesaleprice} where id=#{id}")
     public int putPriceadjustment(Map map);
 
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.his.drugwarehouse.mapper.SysDrugPricingMapper">
+    <select id="queryAll" resultType="map">
+        SELECT * FROM sys_drugpricing d,sys_drugwarehouse sd
+        WHERE d.id=sd.id AND d.dpprocessing!=1
+        <if test="drugname!='' and drugname!=null">
+            and sd.drugname  like '%${drugname}%'
+        </if>
+        <if test="supplier!='' and supplier!=null">
+            and sd.supplier  like '%${supplier}%'
+        </if>
+    </select>
+</mapper>

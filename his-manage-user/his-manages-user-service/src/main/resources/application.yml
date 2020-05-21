@@ -2,7 +2,7 @@ server:
   port: 12000
 spring:
   application:
-    name: manages-user-service  #前台微服务
+    name: managesuser-service  #前台微服务
   datasource:
     url: jdbc:mysql:///hisproject
     driver-class-name: com.mysql.jdbc.Driver
@@ -20,4 +20,14 @@ eureka:
     lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务
 
 mybatis:
-  type-aliases-package: org.java.user.pojo
+  type-aliases-package: org.java.his.managesuser.pojo
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+##以debug方式，显示org.java.dao包所有的底层sql语句
+#logging:
+#  level:
+#    org:
+#      java:
+#        his:
+#          drugwarehouse:
+#            mapper: debug

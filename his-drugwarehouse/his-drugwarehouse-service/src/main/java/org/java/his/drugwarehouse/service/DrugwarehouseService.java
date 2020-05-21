@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import org.java.his.drugwarehouse.mapper.DrugwarehouseMapper;
 import org.java.his.drugwarehouse.pojo.Drugwarehouse;
 
+import org.java.his.drugwarehouse.pojo.SysDrugPricing;
 import org.java.his.enums.ShoppingEnums;
 import org.java.his.exception.ShoppingException;
 import org.java.his.vo.PageResult;
@@ -14,15 +15,22 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * 药品入库
+ */
 @Service
 public class DrugwarehouseService {
 
     @Autowired
     private DrugwarehouseMapper drugwarehouseMapper;
+
+    @Autowired
+    private SysDrugPricingService sysDrugPricingService;
 
     /**
      * 添加药品入库
@@ -95,12 +103,22 @@ public class DrugwarehouseService {
      * 删除药品
      * @param id
      */
-    public void delDrugwarehouse(String id) {
+    public Boolean delDrugwarehouse(String id) {
 
+        //先查询药品调价和药品报损里面，该药品是否在里面有业务
+
+        List<SysDrugPricing> sysDrugPricings = sysDrugPricingService.queryDrugPricingByid(id);
+
+        if (!CollectionUtils.isEmpty(sysDrugPricings)){
+            return false;
+        }
+
+        //删除药库里面的信息
         int rows= drugwarehouseMapper.deleteByPrimaryKey(id);
         if (rows==0){
             throw new ShoppingException(ShoppingEnums.DRUGWAREHOUSE_DELETE_FAILURE);
         }
+        return rows==1;
     }
 
     /**
@@ -141,14 +159,20 @@ public class DrugwarehouseService {
      * @param map
      */
     public void putPriceadjustment(Map map) {
-        
+
+        Map map1=new HashMap();
         //从map中获得编号、批发价、现零售价
         String id = map.get("id").toString();
-        String retailprice = map.get("protretailprice").toString();
-        String wholesaleprice =map.get("nowretailprice").toString();
+        String retailprice = map.get("dpprotretailprice").toString();
+        String wholesaleprice =map.get("dpnowretailprice").toString();
+
+
+        map1.put("id",id);
+        map1.put("retailprice",retailprice);
+        map1.put("wholesaleprice",wholesaleprice);
 
         //药品调价
-        int rows = drugwarehouseMapper.putPriceadjustment(map);
+        int rows = drugwarehouseMapper.putPriceadjustment(map1);
         if (rows==0){
             throw new ShoppingException(ShoppingEnums.DRUGWAREHOUSE_PUUPRICEADJUSTMENT_FAILURE);
         }

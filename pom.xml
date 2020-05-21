@@ -14,6 +14,8 @@
         <module>his-drugwarehouse</module>
         <module>his-user</module>
         <module>his-manage-user</module>
+        <module>his-auth</module>
+        <module>his-upload</module>
     </modules>
 
     <!--声明当前项目是一个聚合项目，是由多个模块构成-->

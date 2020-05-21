@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.his.managesuser.dao.UserMapper">
+    <select id="queryUser" resultMap="userMap">
+        SELECT m.*,m.id uId,r.*,r.id rId FROM manage_user m,sys_role r,sys_user_role ur
+          WHERE r.id=ur.role_id AND m.id=ur.user_id AND m.username=#{username}
+    </select>
+
+    <resultMap id="userMap" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="password" property="password"/>
+        <result column="created" property="created"/>
+        <result column="salt" property="salt"/>
+        <result column="picture" property="picture"/>
+
+        <collection property="roles" ofType="role">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+        </collection>
+    </resultMap>
+</mapper>

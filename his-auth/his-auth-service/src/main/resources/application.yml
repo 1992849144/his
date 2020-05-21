@@ -1,0 +1,24 @@
+server:
+  port: 13000
+spring:
+  application:
+    name: auth-service
+#注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+    registry-fetch-interval-seconds: 5 #每间隔5秒，从注册中心拉取一次最新的服务列表
+  instance:
+    lease-renewal-interval-in-seconds: 10 #每10秒钟，向注册中心发送一次心跳
+    lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务
+
+#配置JWT需要的参数信息，不用硬编码在代码中
+his:
+  jwt:
+    secret: liuyangjwtlogin # 登录校验的密钥
+    pubKeyPath: D:\project\his\tmp\rsa\rsa.pub # 公钥地址
+    priKeyPath: D:\project\his\tmp\rsa\rsa.pri # 私钥地址
+    expire: 30 # token 过期时间,单位分钟
+    cookieName: his-token #cookie的名称
+

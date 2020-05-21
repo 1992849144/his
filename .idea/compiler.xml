@@ -6,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="his-auth-common" />
+        <module name="his-auth-service" />
         <module name="his-common" />
         <module name="his-drugwarehouse-interface" />
         <module name="his-drugwarehouse-service" />
@@ -13,6 +15,7 @@
         <module name="his-gateway" />
         <module name="his-manages-user-interface" />
         <module name="his-manages-user-service" />
+        <module name="his-upload" />
         <module name="his-user-interface" />
         <module name="his-user-service" />
       </profile>

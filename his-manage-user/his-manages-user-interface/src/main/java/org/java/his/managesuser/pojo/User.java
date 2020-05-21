@@ -9,7 +9,9 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "manage_user")
 @Data
@@ -33,16 +35,14 @@ public class User {
     @Length(min = 2,max = 8,message = "姓名的长度必须在2-8字符之间")
     private String username;//用户名称
 
-    private String nickname;//用户昵称
-
     @JsonIgnore //对象进行序列化转换成json时，忽略该属性
     @Length(min = 3,max = 8,message = "密码的长度必须在3-8字符之间")
     private String password;//用户密码
-
-    private Date created;//用户创建时间
 
     @JsonIgnore //对象进行序列化转换成json时，忽略该属性
     private String salt;//盐，用于对密码加密
 
     private String picture;//图片
+
+    private List<Role> roles= new ArrayList<>();  //职位集合
 }

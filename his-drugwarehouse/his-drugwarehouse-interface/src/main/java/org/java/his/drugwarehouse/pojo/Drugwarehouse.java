@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -17,24 +18,24 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Drugwarehouse {
+public class Drugwarehouse implements Serializable {
     @Id
-    private String id;
-    private String drugname;
-    private String localitygrowth;
-    private String drugspecifications;
-    private String supplier;
-    private String documentnumber;
-    private Integer drugbatchnumber;
-    private Double retailprice;
-    private Double wholesaleprice;
-    private String zerocoefficient;
-    private Integer purchasequantity;
-    private Double purchaseprice;
-    private Double purchaseamount;
-    private Integer receipt;
-    private Double netpoor;
-    private Integer discount;
+    private String id;  //药品入库编号
+    private String drugname; //药品名称
+    private String localitygrowth; //药品产地
+    private String drugspecifications; //药品规格
+    private String supplier; //供货单位
+    private String documentnumber;  //单据号码
+    private Integer drugbatchnumber; //药品批号
+    private Double retailprice; //零售单价
+    private Double wholesaleprice; //批发单价
+    private String zerocoefficient; //批零系数
+    private Integer purchasequantity; //购入数量
+    private Double purchaseprice; //购入价
+    private Double purchaseamount; //购入金额
+    private Integer receipt; //入库量
+    private Double netpoor; //进销差
+    private Integer discount; //扣率
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date expirydate;
+    private Date expirydate; //失效日期
 }

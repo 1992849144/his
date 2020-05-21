@@ -15,15 +15,22 @@ eureka:
 zuul:
   prefix: /api
   routes:
-    drugwarehouse-service: #搜索服务的路由
-      path: /drugwarehouse/**
-      serviceId: drugwarehouse-service
-      strip-prefix: false
+    drugwarehouse-service: /drugwarehouse/** #药库
+    managesuser-service: /managesuser/**      #manages，路由到manages-user-service
+    auth-service: /auth/**      #所有以auth开头的请求，路由到auth-service上
+    upload-service: /upload/**  #上传服务的路由
   add-host-header: true  #允许携带请求头
   sensitive-headers: #不指定内容，即表示，没有要忽略的敏感关键字
 
 #配置JWT需要的参数信息，不用硬编码在代码中
-shopping:
+his:
   jwt:
-    pubKeyPath: D:\IEDA\shopping\tmp\rsa\rsa.pub # 公钥地址
-    cookieName: shopping-token #cookie的名称
+    pubKeyPath: D:\project\his\tmp\rsa\rsa.pub # 公钥地址
+    cookieName: his-token #cookie的名称
+  filter: #网关白名称，不拦截
+    allowPaths:
+    - /api/upload
+    - /api/auth
+    - /api/drugwarehouse
+    - /api/user
+    - /api/managesuser
