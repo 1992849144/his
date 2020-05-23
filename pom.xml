@@ -16,6 +16,7 @@
         <module>his-manage-user</module>
         <module>his-auth</module>
         <module>his-upload</module>
+        <module>his-equipment</module>
     </modules>
 
     <!--声明当前项目是一个聚合项目，是由多个模块构成-->

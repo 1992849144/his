@@ -92,10 +92,6 @@ public class SysDrugPricingService {
             pageResult.setCount(pageInfo.getTotal());//数据表中的数据总数
             pageResult.setData(pageInfo.getList());//品牌的集合
 
-            //将当前页，与 总页数，设置到PageResult对象，返回到前台，用于分页
-            pageResult.setPageNum(pageInfo.getPageNum());//当前页
-            pageResult.setMaxPage(pageInfo.getPages());//最大页
-
             return pageResult;
         }
         return null;

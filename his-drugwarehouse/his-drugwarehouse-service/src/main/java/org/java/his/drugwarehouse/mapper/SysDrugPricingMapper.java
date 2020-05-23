@@ -32,6 +32,13 @@ public interface SysDrugPricingMapper extends Mapper<SysDrugPricing> {
     public List<SysDrugPricing> queryDrugPricingByid(String id);
 
     /**
+     * 查询药品调价信息，根据药品编号和是否处理不为1，不连药品入库表
+     * @param id
+     */
+    @Select("select * from sys_drugpricing where id=#{id} and  dpprocessing=1")
+    public List<SysDrugPricing> queryDrugPricingByids(String id);
+
+    /**
      * 查询药品调价信息，根据药品编号,连药品入库表,根据药品报损
      * @param dpid
      * @return

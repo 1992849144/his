@@ -38,4 +38,5 @@ public class Drugwarehouse implements Serializable {
     private Integer discount; //扣率
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expirydate; //失效日期
+    private Integer ifdelete; //是否删除 1：删除，2：末删除
 }

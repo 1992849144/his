@@ -11,6 +11,8 @@
         <module name="his-common" />
         <module name="his-drugwarehouse-interface" />
         <module name="his-drugwarehouse-service" />
+        <module name="his-equipment-interface" />
+        <module name="his-equipment-service" />
         <module name="his-eureka" />
         <module name="his-gateway" />
         <module name="his-manages-user-interface" />

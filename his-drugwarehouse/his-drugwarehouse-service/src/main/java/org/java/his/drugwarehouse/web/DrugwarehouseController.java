@@ -101,7 +101,7 @@ public class DrugwarehouseController {
     }
 
     /**
-     * 修改入库数量
+     * 添加入库数量
      * 直接访问地址: http://localhost:10000/drug/putReceipt
      * 网关访问地址:http://api.his.com/api/drugwarehouse/drug/putReceipt
      * @param drugwarehouse

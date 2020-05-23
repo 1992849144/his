@@ -67,7 +67,6 @@ public class SysBreakageController {
      */
     @DeleteMapping("del/{bid}")
     public ResponseEntity<Void> delBreakage(@PathVariable String bid){
-        System.out.println("***********");
         sysBreakageService.delBreakage(bid);
         return ResponseEntity.ok().build();
     }

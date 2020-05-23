@@ -9,6 +9,9 @@
     <file url="file://$PROJECT_DIR$/his-drugwarehouse" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-drugwarehouse/his-drugwarehouse-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-drugwarehouse/his-drugwarehouse-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-equipment" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-equipment/his-equipment-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/his-equipment/his-equipment-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/his-manage-user" charset="UTF-8" />

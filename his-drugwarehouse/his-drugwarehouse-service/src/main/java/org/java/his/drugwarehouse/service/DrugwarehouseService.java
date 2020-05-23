@@ -3,6 +3,8 @@ package org.java.his.drugwarehouse.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.java.his.drugwarehouse.mapper.DrugwarehouseMapper;
+import org.java.his.drugwarehouse.mapper.SysBreakageMapper;
+import org.java.his.drugwarehouse.mapper.SysDrugPricingMapper;
 import org.java.his.drugwarehouse.pojo.Drugwarehouse;
 
 import org.java.his.drugwarehouse.pojo.SysDrugPricing;
@@ -32,6 +34,9 @@ public class DrugwarehouseService {
     @Autowired
     private SysDrugPricingService sysDrugPricingService;
 
+    @Autowired
+    private SysDrugPricingMapper sysDrugPricingMapper;
+
     /**
      * 添加药品入库
      * @param drugwarehouse
@@ -44,6 +49,7 @@ public class DrugwarehouseService {
 
         //给id赋值
         drugwarehouse.setId(uuid);
+        drugwarehouse.setIfdelete(2);
 
         //添加
         int rows = drugwarehouseMapper.insertSelective(drugwarehouse);
@@ -71,7 +77,7 @@ public class DrugwarehouseService {
         if (!StringUtils.isEmpty(supplier)){
             criteria.andLike("supplier","%"+supplier+"%");
         }
-
+        criteria.andLike("ifdelete","2");
         //设置pageHelper
         PageHelper.startPage(page,limit);
 
@@ -92,29 +98,25 @@ public class DrugwarehouseService {
         pageResult.setCount(pageInfo.getTotal());//数据表中的数据总数
         pageResult.setData(pageInfo.getList());//品牌的集合
 
-        //将当前页，与 总页数，设置到PageResult对象，返回到前台，用于分页
-        pageResult.setPageNum(pageInfo.getPageNum());//当前页
-        pageResult.setMaxPage(pageInfo.getPages());//最大页
-
         return pageResult;
     }
 
     /**
-     * 删除药品
+     * 删除药品,为了药品报损的时候可以查看，只能修改ifdelete为1了
      * @param id
      */
     public Boolean delDrugwarehouse(String id) {
 
         //先查询药品调价和药品报损里面，该药品是否在里面有业务
 
-        List<SysDrugPricing> sysDrugPricings = sysDrugPricingService.queryDrugPricingByid(id);
+        List<SysDrugPricing> sysDrugPricings = sysDrugPricingMapper.queryDrugPricingByids(id);
 
         if (!CollectionUtils.isEmpty(sysDrugPricings)){
             return false;
         }
 
         //删除药库里面的信息
-        int rows= drugwarehouseMapper.deleteByPrimaryKey(id);
+        int rows= drugwarehouseMapper.delDrugwarehouse(id);
         if (rows==0){
             throw new ShoppingException(ShoppingEnums.DRUGWAREHOUSE_DELETE_FAILURE);
         }
@@ -144,7 +146,7 @@ public class DrugwarehouseService {
     }
 
     /**
-     * 修改入库数量
+     * 添加入库数量
      * @param drugwarehouse
      */
     public void putReceipt(Drugwarehouse drugwarehouse) {
@@ -200,5 +202,22 @@ public class DrugwarehouseService {
             return d;
         }
         return null;
+    }
+
+    /**
+     * 修改入库量为0
+     * @param id
+     */
+    public void updateReceiptZero(String id){
+        drugwarehouseMapper.updateReceiptZero(id);
+    }
+
+    /**
+     * 库存减去出库量,修改库存
+     * @param id
+     * @param receipt
+     */
+    public void updateCount(String id,Integer receipt){
+        drugwarehouseMapper.updateCount(id,receipt);
     }
 }
