@@ -48,4 +48,14 @@ public class MedicalWarehouse {
     @Column(name = "dateProduction")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String dateProduction;  //出厂日期
+
+    @Column(name = "ifPayment")
+    private Integer ifPayment;  //是否付款 1：付款，2：末付款 3:退货
+
+    @Column(name = "salesReturn")
+    private String salesReturn;  //退货原因
+
+    @Column(name = "returnTime")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date returnTime;  //退货时间
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.his.equipment.dao.MedicalWarehouseMapper">
+    <select id="load" resultType="medicalWarehouse">
+        select * from medical_warehouse where ifPayment!=3
+        <if test="mid!='' and mid!=null">
+            and mid  like '%${mid}%'
+        </if>
+        order by ifPayment desc
+    </select>
+
+    <select id="loadAll" resultType="medicalWarehouse">
+        select * from medical_warehouse where ifPayment!=3
+        <if test="category!='' and category!=null">
+            and category  like '%${mid}%'
+        </if>
+        <if test="itemName!='' and itemName!=null">
+            and itemName  like '%${itemName}%'
+        </if>
+    </select>
+</mapper>

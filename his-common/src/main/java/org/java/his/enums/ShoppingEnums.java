@@ -12,6 +12,9 @@ import lombok.Getter;
 public enum ShoppingEnums {
 
     //枚举值，相当于构造函数
+    MEDICAL_PUT_NOT_FOUND(400,"医疗设备退款失败"),
+    MEDICAL_UPDATE_NOT_FOUND(400,"医疗设备付款失败"),
+    MEDICAL_DEL_NOT_FOUND(400,"医疗设备删除失败"),
     MEDICAL_LIST_NOT_FOUND(404,"医疗设备列表不存在"),
     MEDICAL_ADD_NOT_FOUND(400,"医疗设备新增入库失败"),
     MEDICINE_DEL_NOT_FOUND(404,"药品出库删除失败"),

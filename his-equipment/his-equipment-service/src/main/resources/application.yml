@@ -18,3 +18,7 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 10 #每10秒钟，向注册中心发送一次心跳
     lease-expiration-duration-in-seconds: 30 #如果30秒未消接收到心跳，剔除该服务
+
+mybatis:
+  type-aliases-package: org.java.his.equipment.pojo
+  mapper-locations: classpath:mapper/*Mapper.xml
