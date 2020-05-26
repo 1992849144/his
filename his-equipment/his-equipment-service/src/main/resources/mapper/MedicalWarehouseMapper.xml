@@ -12,7 +12,7 @@
     <select id="loadAll" resultType="medicalWarehouse">
         select * from medical_warehouse where ifPayment!=3
         <if test="category!='' and category!=null">
-            and category  like '%${mid}%'
+            and category  like '%${category}%'
         </if>
         <if test="itemName!='' and itemName!=null">
             and itemName  like '%${itemName}%'

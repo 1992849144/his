@@ -139,6 +139,7 @@ public class DrugwarehouseService {
      * @param drugwarehouse
      */
     public void updateDrugwarehouse(Drugwarehouse drugwarehouse){
+        drugwarehouse.setIfdelete(2);
         int rows = drugwarehouseMapper.updateByPrimaryKey(drugwarehouse);
         if (rows==0){
             throw new ShoppingException(ShoppingEnums.DRUGWAREHOUSE_UPDATE_FAILURE);

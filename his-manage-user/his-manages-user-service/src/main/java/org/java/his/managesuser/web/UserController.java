@@ -20,8 +20,8 @@ public class UserController {
      *  直接访问地址: http://localhost:12000/query?username=admin&password=123
      *  网关访问地址: http://api.his.com/api/managesuser/query?username=admin&password=123
      */
-    @GetMapping("query")
-    public ResponseEntity<User> queryUser( @RequestParam("username")String username,
+    @GetMapping("/query")
+    public ResponseEntity<User> queryUser(@RequestParam("username")String username,
                                            @RequestParam("password") String password){
         //根据用户名，密码查询
         User user = userService.queryUser(username,password);

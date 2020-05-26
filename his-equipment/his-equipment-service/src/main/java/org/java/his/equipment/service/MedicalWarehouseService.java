@@ -248,4 +248,13 @@ public class MedicalWarehouseService {
 
         return pageResult;
     }
+
+    /**
+     * 修改入库数量，入库数量-领料单的数量
+     * @param mid
+     * @param numberRecipients
+     */
+    public void updateInventoryQuantity(String mid,Integer numberRecipients){
+        medicalWarehouseMapper.updateInventoryQuantity(mid,numberRecipients);
+    }
 }

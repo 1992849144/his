@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.his.equipment.dao.MaterialRequisitionMapper">
+    <select id="loadAll" resultType="map">
+        SELECT *,mw.time times FROM materialRequisition m,medical_warehouse mw,department d,departments ds
+        WHERE m.mid=mw.mid AND m.dId=d.dId AND m.departmentsId=ds.departmentsId
+        <if test="category!='' and category!=null">
+            and mw.category  like '%${category}%'
+        </if>
+        <if test="itemName!='' and itemName!=null">
+            and mw.itemName  like '%${itemName}%'
+        </if>
+    </select>
+</mapper>

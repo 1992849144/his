@@ -36,4 +36,13 @@ public interface MedicalWarehouseMapper extends Mapper<MedicalWarehouse> {
     public List<MedicalWarehouse> loadAll(@Param("category") String category,
                                           @Param("itemName") String itemName);
 
+    /**
+     *
+     * @param mid
+     * @param numberRecipients
+     */
+    @Update("update medical_warehouse set inventoryQuantity=inventoryQuantity-#{numberRecipients} where mid=#{mid}")
+    public void updateInventoryQuantity(@Param("mid") String mid,
+                                        @Param("numberRecipients") Integer numberRecipients);
+
 }

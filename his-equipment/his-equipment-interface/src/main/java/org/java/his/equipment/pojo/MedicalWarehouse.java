@@ -8,13 +8,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 医疗设备库房
+ */
 @Table(name = "medical_warehouse")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MedicalWarehouse {
+public class MedicalWarehouse implements Serializable {
 
     @Id
     @Column(name = "mid")
@@ -58,4 +62,7 @@ public class MedicalWarehouse {
     @Column(name = "returnTime")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date returnTime;  //退货时间
+
+    @Column(name = "weight")
+    private String weight;  //重量
 }
