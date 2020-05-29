@@ -45,4 +45,11 @@ public interface MedicalWarehouseMapper extends Mapper<MedicalWarehouse> {
     public void updateInventoryQuantity(@Param("mid") String mid,
                                         @Param("numberRecipients") Integer numberRecipients);
 
+    /**
+     * 修改医疗设备库房中的数量
+     * @param inventoryQuantity
+     * @param mid
+     */
+    @Update("update medical_warehouse set inventoryQuantity=inventoryQuantity+#{inventoryQuantity} where mid=#{mid}")
+   public void updateCount(@Param("inventoryQuantity") Integer inventoryQuantity, @Param("mid") String mid);
 }

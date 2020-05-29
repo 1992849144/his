@@ -135,4 +135,18 @@ public class MedicalWarehouseController {
         PageResult<MedicalWarehouse> pageResult = medicalWwarehouseService.loadSalesReturn(mid, page, limit);
         return  ResponseEntity.ok(pageResult);
     }
+
+    /**
+     * 修改医疗设备库房中的数量
+     * 直接访问地址: http://localhost:11000/medical
+     * 网关访问地址: http://api.his.com/api/equipment/medical
+     * @param inventoryQuantity
+     * @param mid
+     * @return
+     */
+    @PutMapping
+    public ResponseEntity<Void> updateCount(Integer inventoryQuantity,String mid){
+        medicalWwarehouseService.updateCount(inventoryQuantity,mid);
+        return ResponseEntity.ok().build();
+    }
 }

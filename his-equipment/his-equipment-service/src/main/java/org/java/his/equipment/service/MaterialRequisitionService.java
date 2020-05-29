@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * 药品领料单
+ */
 @Service
 public class MaterialRequisitionService {
 
@@ -63,6 +66,14 @@ public class MaterialRequisitionService {
                             Integer.parseInt(map.get("numberRecipients").toString()));
     }
 
+    /**
+     * 显示所有领料单
+     * @param itemName
+     * @param category
+     * @param page
+     * @param limit
+     * @return
+     */
     public PageResult<Map> loadAll(String itemName,String category,Integer page,Integer limit ) {
         //设置pageHelper
         PageHelper.startPage(page,limit);

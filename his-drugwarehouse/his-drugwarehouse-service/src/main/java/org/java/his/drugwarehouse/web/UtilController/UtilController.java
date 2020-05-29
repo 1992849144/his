@@ -70,7 +70,7 @@ public class UtilController {
     }
 
     /**
-     * 查询除了末处理的药品调价的信息
+     * 查询除了末处理的药品报损的信息
      * 直接访问地址: http://localhost:10000/queryAllBreakage?page=1&limit=20
      * 网关访问地址: http://api.his.com/api/drugwarehouse/queryAllBreakage?page=1&limit=20
      * @return

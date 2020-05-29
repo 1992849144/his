@@ -30,5 +30,6 @@
         <if test="supplier!='' and supplier!=null">
             and sd.supplier  like '%${supplier}%'
         </if>
+        order by b.badjusttime desc
     </select>
 </mapper>

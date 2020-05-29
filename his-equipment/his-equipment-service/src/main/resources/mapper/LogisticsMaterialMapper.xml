@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.his.equipment.dao.LogisticsMaterialMapper">
+    <select id="loadAll" resultType="map">
+        SELECT *,m.time times,m.numberRecipients n FROM
+        logistics_material m,logistics_warehouse lw,department d,departments ds
+        WHERE m.logisticsId=lw.logisticsId AND m.dId=d.dId
+        AND m.departmentsId=ds.departmentsId
+        <if test="itemName!='' and itemName!=null">
+            and lw.itemNames  like '%${itemName}%'
+        </if>
+</select>
+</mapper>

@@ -257,4 +257,13 @@ public class MedicalWarehouseService {
     public void updateInventoryQuantity(String mid,Integer numberRecipients){
         medicalWarehouseMapper.updateInventoryQuantity(mid,numberRecipients);
     }
+
+    /**
+     * 修改医疗设备库房中的数量
+     * @param inventoryQuantity
+     * @param mid
+     */
+    public void updateCount(Integer inventoryQuantity, String mid) {
+        medicalWarehouseMapper.updateCount(inventoryQuantity,mid);
+    }
 }

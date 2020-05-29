@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * 后勤领料单
@@ -34,8 +35,8 @@ public class LogisticsMaterial {
     private String recipientsWay;  //领用方式
 
     @Column(name = "numberRecipients")
-    private String numberRecipients;  //领用数量
+    private Integer numberRecipients;  //领用数量
 
     @Column(name = "time")
-    private String time;  //领用时间
+    private Date time;  //领用时间
 }

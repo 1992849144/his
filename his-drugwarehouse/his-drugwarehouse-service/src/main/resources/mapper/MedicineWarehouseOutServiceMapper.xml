@@ -10,6 +10,7 @@
         <if test="supplier!='' and supplier!=null">
             and d.supplier  like '%${supplier}%'
         </if>
+        order by issueDate desc
     </select>
 
     <select id="queryMedicineWarehouseOute" resultType="map">

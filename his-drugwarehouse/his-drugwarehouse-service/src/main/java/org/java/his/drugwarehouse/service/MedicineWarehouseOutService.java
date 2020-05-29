@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * 药品入库
+ * 医疗设备出库单
  */
 @Service
 public class MedicineWarehouseOutService {
